@@ -1,0 +1,110 @@
+﻿@model Gym.Models.Entity.CustomerEntity
+@{
+    ViewBag.Title = "Create";
+    Layout = "~/Views/Layout/_mainlayout.cshtml";
+}
+
+<h3 style="color:#008080; margin-bottom:0px;">New Customer</h3>
+<hr style="width :100%;color :#008080;" />
+
+@using (Html.BeginForm("SaveCustomer", "Customer", FormMethod.Post,
+    new
+    {
+        enctype = "multipart/form-data"
+    }
+))
+{
+    @Html.AntiForgeryToken();
+	<div class="row">
+		<div class="col-sm-12 col-lg-12">
+			<div class="card-box">
+				<div class="row">
+					<div class="col-md-6">
+						<form class="form-horizontal" role="form">
+							<div class="form-group ">
+								<div class="col-xs-12">
+									<div>@Html.ValidationMessageFor(m => m.customer_id)</div>
+									Customer Id @Html.EditorFor(m => m.customer_id, new { htmlAttributes = new { @class = "form-control" } })
+								</div>
+							</div>
+							<div class="form-group ">
+								<div class="col-xs-12">
+									<div>@Html.ValidationMessageFor(m => m.customer_fullname)</div>
+									Name @Html.EditorFor(m => m.customer_fullname, new { htmlAttributes = new { @class = "form-control" } })
+								</div>
+							</div>
+							<div class="form-group ">
+								<div class="col-xs-12">
+									<div>@Html.ValidationMessageFor(m => m.customer_address)</div>
+									Address @Html.EditorFor(m => m.customer_address, new { htmlAttributes = new { @class = "form-control" } })
+								</div>
+							</div>
+							<div class="form-group ">
+								<div class="col-xs-12">
+									<div>@Html.ValidationMessageFor(m => m.customer_phone)</div>
+									Phone @Html.EditorFor(m => m.customer_phone, new { htmlAttributes = new { @class = "form-control" } })
+								</div>
+							</div>
+							<div class="form-group ">
+								<div class="col-xs-12">
+									<div>@Html.ValidationMessageFor(m => m.customer_photo)</div>
+									Photo <input type="file" name="PhotoFile" required />
+								</div>
+							</div>
+							<div class="form-group">
+								<div class="col-sm-12">
+									@Html.DropDownListFor(m => m.customer_gender, new List<SelectListItem>
+					{
+						new SelectListItem { Text="Male", Value="Male" },
+						new SelectListItem { Text="Female", Value="Female" }
+		   }, new { @class = "form-control" })
+								</div>
+							</div>
+							<div class="form-group ">
+								<div class="col-xs-12">
+									<div>@Html.ValidationMessageFor(m => m.customer_joindate)</div>
+									Join Date 
+									<div class="input-group">
+										<input type="text" class="form-control" placeholder="mm/dd/yyyy" id="datepicker">
+										<span class="input-group-addon bg-custom b-0 text-white"><i class="icon-calender"></i></span>
+									</div>
+								</div>
+							</div>
+							<div class="form-group ">
+								<div class="col-xs-12">
+									Plan Id @Html.DropDownListFor(m => m.plan_id, new SelectList(ViewBag.planList, "plan_id", "plan_name"), new { @class = "form-control" })
+									</div>
+								</div>
+							<div class="form-group">
+								<div class="col-xs-12">
+									Trainer Id @Html.DropDownListFor(m => m.trainer_id, new SelectList(ViewBag.trainerList, "trainer_id", "trainer_name"), new { @class = "form-control" })
+									</div>
+								</div>
+							<div class="form-group ">
+								<div class="col-xs-12">
+									<div>@Html.ValidationMessageFor(m => m.customer_username)</div>
+									Username @Html.EditorFor(m => m.customer_username, new { htmlAttributes = new { @class = "form-control" } })
+								</div>
+							</div>
+							<div class="form-group ">
+								<div class="col-xs-12">
+									<div>@Html.ValidationMessageFor(m => m.customer_password)</div>
+									Password @Html.PasswordFor(m => m.customer_password, new { @class = "form-control" })
+								</div>
+							</div>
+									<div class="form-group text-center m-t-40">
+										<div class="col-xs-12">
+											<button class="btn btn-primary btn-rounded waves-effect waves-light" type="submit">Submit</button>
+										</div>
+									</div>
+						</form>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+}
+
+<p>
+    @Html.ActionLink("Back to Manager", "Index", "Customer", null, new { @class = "menu" })
+</p>

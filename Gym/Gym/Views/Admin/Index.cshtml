@@ -1,0 +1,56 @@
+﻿@model IEnumerable<Gym.Models.Entity.AdminEntity>
+@{
+	ViewBag.Title = "Admins";
+	Layout = "~/Views/Layout/_mainlayout.cshtml";
+}
+
+<h3 style="color:#008080; margin-bottom:0px;">Admins Manager</h3>
+<hr style="width :100%;color :#008080;" />
+<p class="btn btn-default btn-custom btn-rounded waves-effect waves-light">
+	@if (HttpContext.Current.User.IsInRole("Admin"))
+	{ @Html.ActionLink("New Admin", "Create", null, new { @class = "menu" })}
+
+</p>
+<div class="row">
+	<div class="col-sm-12">
+		<div class="card-box table-responsive">
+			<table id="datatable" class="table table-striped table-bordered">
+				<tr>
+					<th>@Html.DisplayNameFor(m => m.admin_fullname)</th>
+					<th>@Html.DisplayNameFor(m => m.admin_username)</th>
+					<th>@Html.DisplayNameFor(m => m.admin_password)</th>
+					<th>Options</th>
+				</tr>
+				@foreach (var item in Model)
+				{
+					<tr>
+						<td>
+							@Html.DisplayFor(mi => item.admin_fullname)
+						</td>
+						<td>
+							@Html.DisplayFor(mi => item.admin_username)
+						</td>
+						<td>
+							@Html.DisplayFor(mi => item.admin_password)
+						</td>
+
+						<td width="250px">
+							<i class="md md-mode-edit"></i> @Html.ActionLink("Edit", "Edit", "Admin", new { id = item.admin_id.Trim() }, new { @class = "menu" }) |
+							<i class="md md-details"></i> @Html.ActionLink("Details", "Details", "Admin", new { id = item.admin_id.Trim() }, new { @class = "menu" }) |
+							<i class="md md-delete"></i> @Html.ActionLink("Delete", "DeleteAdmin", "Admin", new { id = item.admin_id.Trim() },
+			   new
+			   {
+				   @class = "plan",
+				   @onclick = "return confirm('Are you sure you wish to delete this Admin?');"
+			   }
+			   )
+						</td>
+					</tr>
+				}
+			</table>
+			</div>
+		</div>
+	</div>
+			<hr style="width :100%;color :#008080;" />
+
+

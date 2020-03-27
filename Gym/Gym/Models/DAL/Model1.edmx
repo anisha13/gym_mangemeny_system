@@ -1,0 +1,550 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="fitnessModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="account">
+          <Key>
+            <PropertyRef Name="account_id" />
+          </Key>
+          <Property Name="customer_id" Type="varchar" MaxLength="3" Nullable="false" />
+          <Property Name="fee_paid" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="fee_due" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="total_fee" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="plan_id" Type="varchar" MaxLength="3" Nullable="false" />
+          <Property Name="account_id" Type="varchar" MaxLength="3" Nullable="false" />
+        </EntityType>
+        <EntityType Name="admin">
+          <Key>
+            <PropertyRef Name="admin_id" />
+          </Key>
+          <Property Name="admin_id" Type="varchar" MaxLength="3" Nullable="false" />
+          <Property Name="admin_username" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="admin_fullname" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="admin_password" Type="varchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="customer">
+          <Key>
+            <PropertyRef Name="customer_id" />
+          </Key>
+          <Property Name="customer_id" Type="varchar" MaxLength="3" Nullable="false" />
+          <Property Name="customer_fullname" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="customer_address" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="customer_phone" Type="varchar" MaxLength="10" Nullable="false" />
+          <Property Name="customer_photo" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="customer_gender" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="customer_joindate" Type="date" Nullable="false" />
+          <Property Name="trainer_id" Type="varchar" MaxLength="3" Nullable="false" />
+          <Property Name="plan_id" Type="varchar" MaxLength="3" Nullable="false" />
+          <Property Name="customer_username" Type="varchar" MaxLength="50" />
+          <Property Name="customer_password" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="equipment">
+          <Key>
+            <PropertyRef Name="equipment_id" />
+          </Key>
+          <Property Name="equipment_id" Type="varchar" MaxLength="3" Nullable="false" />
+          <Property Name="equipment_name" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="equipment_quantity" Type="varchar" MaxLength="2" Nullable="false" />
+          <Property Name="equipment_cost" Type="int" Nullable="false" />
+          <Property Name="equipment_photo" Type="varchar" MaxLength="1000" Nullable="false" />
+        </EntityType>
+        <EntityType Name="plans">
+          <Key>
+            <PropertyRef Name="plan_id" />
+          </Key>
+          <Property Name="plan_id" Type="varchar" MaxLength="3" Nullable="false" />
+          <Property Name="plan_name" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="plan_cost" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="plan_period" Type="varchar" MaxLength="100" />
+        </EntityType>
+        <EntityType Name="trainer">
+          <Key>
+            <PropertyRef Name="trainer_id" />
+          </Key>
+          <Property Name="trainer_id" Type="varchar" MaxLength="3" Nullable="false" />
+          <Property Name="trainer_name" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="trainer_contact" Type="varchar" MaxLength="10" Nullable="false" />
+          <Property Name="trainer_address" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="trainer_photo" Type="varchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'fitness.dbo.Getaccounts' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="Getaccounts">
+          <Key>
+            <PropertyRef Name="account_id" />
+            <PropertyRef Name="fee_paid" />
+            <PropertyRef Name="plan_id" />
+            <PropertyRef Name="plan_name" />
+            <PropertyRef Name="customer_id" />
+            <PropertyRef Name="customer_fullname" />
+            <PropertyRef Name="fee_due" />
+            <PropertyRef Name="total_fee" />
+          </Key>
+          <Property Name="account_id" Type="varchar" MaxLength="3" Nullable="false" />
+          <Property Name="fee_paid" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="plan_id" Type="varchar" MaxLength="3" Nullable="false" />
+          <Property Name="plan_name" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="customer_id" Type="varchar" MaxLength="3" Nullable="false" />
+          <Property Name="customer_fullname" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="fee_due" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="total_fee" Type="varchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'fitness.dbo.Getcustomers' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="Getcustomers">
+          <Key>
+            <PropertyRef Name="customer_id" />
+            <PropertyRef Name="customer_fullname" />
+            <PropertyRef Name="plan_id" />
+            <PropertyRef Name="plan_name" />
+            <PropertyRef Name="trainer_id" />
+            <PropertyRef Name="trainer_name" />
+            <PropertyRef Name="customer_address" />
+            <PropertyRef Name="customer_phone" />
+            <PropertyRef Name="customer_photo" />
+            <PropertyRef Name="customer_gender" />
+            <PropertyRef Name="customer_joindate" />
+          </Key>
+          <Property Name="customer_id" Type="varchar" MaxLength="3" Nullable="false" />
+          <Property Name="customer_fullname" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="plan_id" Type="varchar" MaxLength="3" Nullable="false" />
+          <Property Name="plan_name" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="trainer_id" Type="varchar" MaxLength="3" Nullable="false" />
+          <Property Name="trainer_name" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="customer_address" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="customer_phone" Type="varchar" MaxLength="10" Nullable="false" />
+          <Property Name="customer_photo" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="customer_gender" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="customer_joindate" Type="date" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_account_customer">
+          <End Role="customer" Type="Self.customer" Multiplicity="1" />
+          <End Role="account" Type="Self.account" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="customer">
+              <PropertyRef Name="customer_id" />
+            </Principal>
+            <Dependent Role="account">
+              <PropertyRef Name="customer_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_account_plans">
+          <End Role="plans" Type="Self.plans" Multiplicity="1" />
+          <End Role="account" Type="Self.account" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="plans">
+              <PropertyRef Name="plan_id" />
+            </Principal>
+            <Dependent Role="account">
+              <PropertyRef Name="plan_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_customer_plans">
+          <End Role="plans" Type="Self.plans" Multiplicity="1" />
+          <End Role="customer" Type="Self.customer" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="plans">
+              <PropertyRef Name="plan_id" />
+            </Principal>
+            <Dependent Role="customer">
+              <PropertyRef Name="plan_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_customer_trainer">
+          <End Role="trainer" Type="Self.trainer" Multiplicity="1" />
+          <End Role="customer" Type="Self.customer" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="trainer">
+              <PropertyRef Name="trainer_id" />
+            </Principal>
+            <Dependent Role="customer">
+              <PropertyRef Name="trainer_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="fitnessModelStoreContainer">
+          <EntitySet Name="account" EntityType="Self.account" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="admin" EntityType="Self.admin" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="customer" EntityType="Self.customer" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="equipment" EntityType="Self.equipment" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="plans" EntityType="Self.plans" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="trainer" EntityType="Self.trainer" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Getaccounts" EntityType="Self.Getaccounts" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [Getaccounts].[account_id] AS [account_id], 
+    [Getaccounts].[fee_paid] AS [fee_paid], 
+    [Getaccounts].[plan_id] AS [plan_id], 
+    [Getaccounts].[plan_name] AS [plan_name], 
+    [Getaccounts].[customer_id] AS [customer_id], 
+    [Getaccounts].[customer_fullname] AS [customer_fullname], 
+    [Getaccounts].[fee_due] AS [fee_due], 
+    [Getaccounts].[total_fee] AS [total_fee]
+    FROM [dbo].[Getaccounts] AS [Getaccounts]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="Getcustomers" EntityType="Self.Getcustomers" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [Getcustomers].[customer_id] AS [customer_id], 
+    [Getcustomers].[customer_fullname] AS [customer_fullname], 
+    [Getcustomers].[plan_id] AS [plan_id], 
+    [Getcustomers].[plan_name] AS [plan_name], 
+    [Getcustomers].[trainer_id] AS [trainer_id], 
+    [Getcustomers].[trainer_name] AS [trainer_name], 
+    [Getcustomers].[customer_address] AS [customer_address], 
+    [Getcustomers].[customer_phone] AS [customer_phone], 
+    [Getcustomers].[customer_photo] AS [customer_photo], 
+    [Getcustomers].[customer_gender] AS [customer_gender], 
+    [Getcustomers].[customer_joindate] AS [customer_joindate]
+    FROM [dbo].[Getcustomers] AS [Getcustomers]</DefiningQuery>
+          </EntitySet>
+          <AssociationSet Name="FK_account_customer" Association="Self.FK_account_customer">
+            <End Role="customer" EntitySet="customer" />
+            <End Role="account" EntitySet="account" />
+          </AssociationSet>
+          <AssociationSet Name="FK_account_plans" Association="Self.FK_account_plans">
+            <End Role="plans" EntitySet="plans" />
+            <End Role="account" EntitySet="account" />
+          </AssociationSet>
+          <AssociationSet Name="FK_customer_plans" Association="Self.FK_customer_plans">
+            <End Role="plans" EntitySet="plans" />
+            <End Role="customer" EntitySet="customer" />
+          </AssociationSet>
+          <AssociationSet Name="FK_customer_trainer" Association="Self.FK_customer_trainer">
+            <End Role="trainer" EntitySet="trainer" />
+            <End Role="customer" EntitySet="customer" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="fitnessModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="account">
+          <Key>
+            <PropertyRef Name="account_id" />
+          </Key>
+          <Property Name="customer_id" Type="String" MaxLength="3" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="fee_paid" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="fee_due" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="total_fee" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="plan_id" Type="String" MaxLength="3" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="account_id" Type="String" MaxLength="3" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="customer" Relationship="Self.FK_account_customer" FromRole="account" ToRole="customer" />
+          <NavigationProperty Name="plan" Relationship="Self.FK_account_plans" FromRole="account" ToRole="plans" />
+        </EntityType>
+        <EntityType Name="admin">
+          <Key>
+            <PropertyRef Name="admin_id" />
+          </Key>
+          <Property Name="admin_id" Type="String" MaxLength="3" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="admin_username" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="admin_fullname" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="admin_password" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+        </EntityType>
+        <EntityType Name="customer">
+          <Key>
+            <PropertyRef Name="customer_id" />
+          </Key>
+          <Property Name="customer_id" Type="String" MaxLength="3" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="customer_fullname" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="customer_address" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="customer_phone" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="customer_photo" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="customer_gender" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="customer_joindate" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="trainer_id" Type="String" MaxLength="3" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="plan_id" Type="String" MaxLength="3" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="accounts" Relationship="Self.FK_account_customer" FromRole="customer" ToRole="account" />
+          <NavigationProperty Name="plan" Relationship="Self.FK_customer_plans" FromRole="customer" ToRole="plans" />
+          <NavigationProperty Name="trainer" Relationship="Self.FK_customer_trainer" FromRole="customer" ToRole="trainer" />
+          <Property Name="customer_username" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="customer_password" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="equipment">
+          <Key>
+            <PropertyRef Name="equipment_id" />
+          </Key>
+          <Property Name="equipment_id" Type="String" MaxLength="3" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="equipment_name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="equipment_quantity" Type="String" MaxLength="2" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="equipment_cost" Type="Int32" Nullable="false" />
+          <Property Name="equipment_photo" Type="String" MaxLength="1000" FixedLength="false" Unicode="false" Nullable="false" />
+        </EntityType>
+        <EntityType Name="plan">
+          <Key>
+            <PropertyRef Name="plan_id" />
+          </Key>
+          <Property Name="plan_id" Type="String" MaxLength="3" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="plan_name" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="plan_cost" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="plan_period" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="accounts" Relationship="Self.FK_account_plans" FromRole="plans" ToRole="account" />
+          <NavigationProperty Name="customers" Relationship="Self.FK_customer_plans" FromRole="plans" ToRole="customer" />
+        </EntityType>
+        <EntityType Name="trainer">
+          <Key>
+            <PropertyRef Name="trainer_id" />
+          </Key>
+          <Property Name="trainer_id" Type="String" MaxLength="3" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="trainer_name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="trainer_contact" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="trainer_address" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="trainer_photo" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="customers" Relationship="Self.FK_customer_trainer" FromRole="trainer" ToRole="customer" />
+        </EntityType>
+        <EntityType Name="Getaccount">
+          <Key>
+            <PropertyRef Name="account_id" />
+            <PropertyRef Name="fee_paid" />
+            <PropertyRef Name="plan_id" />
+            <PropertyRef Name="plan_name" />
+            <PropertyRef Name="customer_id" />
+            <PropertyRef Name="customer_fullname" />
+            <PropertyRef Name="fee_due" />
+            <PropertyRef Name="total_fee" />
+          </Key>
+          <Property Name="account_id" Type="String" MaxLength="3" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="fee_paid" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="plan_id" Type="String" MaxLength="3" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="plan_name" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="customer_id" Type="String" MaxLength="3" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="customer_fullname" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="fee_due" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="total_fee" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Getcustomer">
+          <Key>
+            <PropertyRef Name="customer_id" />
+            <PropertyRef Name="customer_fullname" />
+            <PropertyRef Name="plan_id" />
+            <PropertyRef Name="plan_name" />
+            <PropertyRef Name="trainer_id" />
+            <PropertyRef Name="trainer_name" />
+            <PropertyRef Name="customer_address" />
+            <PropertyRef Name="customer_phone" />
+            <PropertyRef Name="customer_photo" />
+            <PropertyRef Name="customer_gender" />
+            <PropertyRef Name="customer_joindate" />
+          </Key>
+          <Property Name="customer_id" Type="String" MaxLength="3" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="customer_fullname" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="plan_id" Type="String" MaxLength="3" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="plan_name" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="trainer_id" Type="String" MaxLength="3" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="trainer_name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="customer_address" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="customer_phone" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="customer_photo" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="customer_gender" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="customer_joindate" Type="DateTime" Nullable="false" Precision="0" />
+        </EntityType>
+        <Association Name="FK_account_customer">
+          <End Role="customer" Type="Self.customer" Multiplicity="1" />
+          <End Role="account" Type="Self.account" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="customer">
+              <PropertyRef Name="customer_id" />
+            </Principal>
+            <Dependent Role="account">
+              <PropertyRef Name="customer_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_account_plans">
+          <End Role="plans" Type="Self.plan" Multiplicity="1" />
+          <End Role="account" Type="Self.account" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="plans">
+              <PropertyRef Name="plan_id" />
+            </Principal>
+            <Dependent Role="account">
+              <PropertyRef Name="plan_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_customer_plans">
+          <End Role="plans" Type="Self.plan" Multiplicity="1" />
+          <End Role="customer" Type="Self.customer" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="plans">
+              <PropertyRef Name="plan_id" />
+            </Principal>
+            <Dependent Role="customer">
+              <PropertyRef Name="plan_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_customer_trainer">
+          <End Role="trainer" Type="Self.trainer" Multiplicity="1" />
+          <End Role="customer" Type="Self.customer" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="trainer">
+              <PropertyRef Name="trainer_id" />
+            </Principal>
+            <Dependent Role="customer">
+              <PropertyRef Name="trainer_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="fitnessEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="accounts" EntityType="Self.account" />
+          <EntitySet Name="admins" EntityType="Self.admin" />
+          <EntitySet Name="customers" EntityType="Self.customer" />
+          <EntitySet Name="equipments" EntityType="Self.equipment" />
+          <EntitySet Name="plans" EntityType="Self.plan" />
+          <EntitySet Name="trainers" EntityType="Self.trainer" />
+          <EntitySet Name="Getaccounts" EntityType="Self.Getaccount" />
+          <EntitySet Name="Getcustomers" EntityType="Self.Getcustomer" />
+          <AssociationSet Name="FK_account_customer" Association="Self.FK_account_customer">
+            <End Role="customer" EntitySet="customers" />
+            <End Role="account" EntitySet="accounts" />
+          </AssociationSet>
+          <AssociationSet Name="FK_account_plans" Association="Self.FK_account_plans">
+            <End Role="plans" EntitySet="plans" />
+            <End Role="account" EntitySet="accounts" />
+          </AssociationSet>
+          <AssociationSet Name="FK_customer_plans" Association="Self.FK_customer_plans">
+            <End Role="plans" EntitySet="plans" />
+            <End Role="customer" EntitySet="customers" />
+          </AssociationSet>
+          <AssociationSet Name="FK_customer_trainer" Association="Self.FK_customer_trainer">
+            <End Role="trainer" EntitySet="trainers" />
+            <End Role="customer" EntitySet="customers" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="fitnessModelStoreContainer" CdmEntityContainer="fitnessEntities">
+          <EntitySetMapping Name="accounts">
+            <EntityTypeMapping TypeName="fitnessModel.account">
+              <MappingFragment StoreEntitySet="account">
+                <ScalarProperty Name="customer_id" ColumnName="customer_id" />
+                <ScalarProperty Name="fee_paid" ColumnName="fee_paid" />
+                <ScalarProperty Name="fee_due" ColumnName="fee_due" />
+                <ScalarProperty Name="total_fee" ColumnName="total_fee" />
+                <ScalarProperty Name="plan_id" ColumnName="plan_id" />
+                <ScalarProperty Name="account_id" ColumnName="account_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="admins">
+            <EntityTypeMapping TypeName="fitnessModel.admin">
+              <MappingFragment StoreEntitySet="admin">
+                <ScalarProperty Name="admin_id" ColumnName="admin_id" />
+                <ScalarProperty Name="admin_username" ColumnName="admin_username" />
+                <ScalarProperty Name="admin_fullname" ColumnName="admin_fullname" />
+                <ScalarProperty Name="admin_password" ColumnName="admin_password" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="customers">
+            <EntityTypeMapping TypeName="fitnessModel.customer">
+              <MappingFragment StoreEntitySet="customer">
+                <ScalarProperty Name="customer_password" ColumnName="customer_password" />
+                <ScalarProperty Name="customer_username" ColumnName="customer_username" />
+                <ScalarProperty Name="customer_id" ColumnName="customer_id" />
+                <ScalarProperty Name="customer_fullname" ColumnName="customer_fullname" />
+                <ScalarProperty Name="customer_address" ColumnName="customer_address" />
+                <ScalarProperty Name="customer_phone" ColumnName="customer_phone" />
+                <ScalarProperty Name="customer_photo" ColumnName="customer_photo" />
+                <ScalarProperty Name="customer_gender" ColumnName="customer_gender" />
+                <ScalarProperty Name="customer_joindate" ColumnName="customer_joindate" />
+                <ScalarProperty Name="trainer_id" ColumnName="trainer_id" />
+                <ScalarProperty Name="plan_id" ColumnName="plan_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="equipments">
+            <EntityTypeMapping TypeName="fitnessModel.equipment">
+              <MappingFragment StoreEntitySet="equipment">
+                <ScalarProperty Name="equipment_id" ColumnName="equipment_id" />
+                <ScalarProperty Name="equipment_name" ColumnName="equipment_name" />
+                <ScalarProperty Name="equipment_quantity" ColumnName="equipment_quantity" />
+                <ScalarProperty Name="equipment_cost" ColumnName="equipment_cost" />
+                <ScalarProperty Name="equipment_photo" ColumnName="equipment_photo" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="plans">
+            <EntityTypeMapping TypeName="fitnessModel.plan">
+              <MappingFragment StoreEntitySet="plans">
+                <ScalarProperty Name="plan_id" ColumnName="plan_id" />
+                <ScalarProperty Name="plan_name" ColumnName="plan_name" />
+                <ScalarProperty Name="plan_cost" ColumnName="plan_cost" />
+                <ScalarProperty Name="plan_period" ColumnName="plan_period" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="trainers">
+            <EntityTypeMapping TypeName="fitnessModel.trainer">
+              <MappingFragment StoreEntitySet="trainer">
+                <ScalarProperty Name="trainer_id" ColumnName="trainer_id" />
+                <ScalarProperty Name="trainer_name" ColumnName="trainer_name" />
+                <ScalarProperty Name="trainer_contact" ColumnName="trainer_contact" />
+                <ScalarProperty Name="trainer_address" ColumnName="trainer_address" />
+                <ScalarProperty Name="trainer_photo" ColumnName="trainer_photo" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Getaccounts">
+            <EntityTypeMapping TypeName="fitnessModel.Getaccount">
+              <MappingFragment StoreEntitySet="Getaccounts">
+                <ScalarProperty Name="account_id" ColumnName="account_id" />
+                <ScalarProperty Name="fee_paid" ColumnName="fee_paid" />
+                <ScalarProperty Name="plan_id" ColumnName="plan_id" />
+                <ScalarProperty Name="plan_name" ColumnName="plan_name" />
+                <ScalarProperty Name="customer_id" ColumnName="customer_id" />
+                <ScalarProperty Name="customer_fullname" ColumnName="customer_fullname" />
+                <ScalarProperty Name="fee_due" ColumnName="fee_due" />
+                <ScalarProperty Name="total_fee" ColumnName="total_fee" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Getcustomers">
+            <EntityTypeMapping TypeName="fitnessModel.Getcustomer">
+              <MappingFragment StoreEntitySet="Getcustomers">
+                <ScalarProperty Name="customer_id" ColumnName="customer_id" />
+                <ScalarProperty Name="customer_fullname" ColumnName="customer_fullname" />
+                <ScalarProperty Name="plan_id" ColumnName="plan_id" />
+                <ScalarProperty Name="plan_name" ColumnName="plan_name" />
+                <ScalarProperty Name="trainer_id" ColumnName="trainer_id" />
+                <ScalarProperty Name="trainer_name" ColumnName="trainer_name" />
+                <ScalarProperty Name="customer_address" ColumnName="customer_address" />
+                <ScalarProperty Name="customer_phone" ColumnName="customer_phone" />
+                <ScalarProperty Name="customer_photo" ColumnName="customer_photo" />
+                <ScalarProperty Name="customer_gender" ColumnName="customer_gender" />
+                <ScalarProperty Name="customer_joindate" ColumnName="customer_joindate" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

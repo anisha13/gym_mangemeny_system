@@ -1,0 +1,43 @@
+﻿<div class="left side-menu">
+	<div class="sidebar-inner slimscrollleft">
+		<!--- Divider -->
+		<div id="sidebar-menu">
+			<ul>
+
+				<li class="text-muted menu-title">MEMBER MENU</li>
+
+				<li class="has_sub">
+					<a href="@Url.Action("Index", "Home")">
+						<i class="ti-home"></i>   Home
+					</a>
+				</li>
+				<li class="has_sub">
+					<a href="@Url.Action("Index", "Trainer")">
+						<i class="fas fa-user-shield"></i>   Trainer
+					</a>
+				</li>
+				<li class="has_sub">
+					<a href="@Url.Action("Index", "Plan")">
+						<i class="fas fa-chalkboard-teacher"></i>   Plan
+					</a>
+				</li>
+				<li class="has_sub">
+					<a href="@Url.Action("Index", "Equipment")">
+						<i class="fas fa-list-ul"></i>   Equipment
+					</a>
+				</li>
+				<li class="has_sub">
+					<a href="@Url.Action("DetailsNull", "Customer")">
+						<i class="fas fa-portrait"></i>   Profile
+					</a>
+				</li>
+				<li class="has_sub">
+					@Html.ActionLink("Logout", "LogOff", "Acccount", null, new { @class = "btn btn-danger" })
+					</a>
+				</li>
+			</ul>
+			<div class="clearfix"></div>
+		</div>
+		<div class="clearfix"></div>
+	</div>
+</div>

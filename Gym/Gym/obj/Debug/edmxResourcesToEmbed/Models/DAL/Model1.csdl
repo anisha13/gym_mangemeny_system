@@ -1,0 +1,196 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="fitnessModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="account">
+    <Key>
+      <PropertyRef Name="account_id" />
+    </Key>
+    <Property Name="customer_id" Type="String" MaxLength="3" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="fee_paid" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="fee_due" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="total_fee" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="plan_id" Type="String" MaxLength="3" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="account_id" Type="String" MaxLength="3" FixedLength="false" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="customer" Relationship="Self.FK_account_customer" FromRole="account" ToRole="customer" />
+    <NavigationProperty Name="plan" Relationship="Self.FK_account_plans" FromRole="account" ToRole="plans" />
+  </EntityType>
+  <EntityType Name="admin">
+    <Key>
+      <PropertyRef Name="admin_id" />
+    </Key>
+    <Property Name="admin_id" Type="String" MaxLength="3" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="admin_username" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="admin_fullname" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="admin_password" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+  </EntityType>
+  <EntityType Name="customer">
+    <Key>
+      <PropertyRef Name="customer_id" />
+    </Key>
+    <Property Name="customer_id" Type="String" MaxLength="3" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="customer_fullname" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="customer_address" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="customer_phone" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="customer_photo" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="customer_gender" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="customer_joindate" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="trainer_id" Type="String" MaxLength="3" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="plan_id" Type="String" MaxLength="3" FixedLength="false" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="accounts" Relationship="Self.FK_account_customer" FromRole="customer" ToRole="account" />
+    <NavigationProperty Name="plan" Relationship="Self.FK_customer_plans" FromRole="customer" ToRole="plans" />
+    <NavigationProperty Name="trainer" Relationship="Self.FK_customer_trainer" FromRole="customer" ToRole="trainer" />
+    <Property Name="customer_username" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="customer_password" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="equipment">
+    <Key>
+      <PropertyRef Name="equipment_id" />
+    </Key>
+    <Property Name="equipment_id" Type="String" MaxLength="3" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="equipment_name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="equipment_quantity" Type="String" MaxLength="2" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="equipment_cost" Type="Int32" Nullable="false" />
+    <Property Name="equipment_photo" Type="String" MaxLength="1000" FixedLength="false" Unicode="false" Nullable="false" />
+  </EntityType>
+  <EntityType Name="plan">
+    <Key>
+      <PropertyRef Name="plan_id" />
+    </Key>
+    <Property Name="plan_id" Type="String" MaxLength="3" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="plan_name" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="plan_cost" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="plan_period" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="accounts" Relationship="Self.FK_account_plans" FromRole="plans" ToRole="account" />
+    <NavigationProperty Name="customers" Relationship="Self.FK_customer_plans" FromRole="plans" ToRole="customer" />
+  </EntityType>
+  <EntityType Name="trainer">
+    <Key>
+      <PropertyRef Name="trainer_id" />
+    </Key>
+    <Property Name="trainer_id" Type="String" MaxLength="3" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="trainer_name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="trainer_contact" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="trainer_address" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="trainer_photo" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="customers" Relationship="Self.FK_customer_trainer" FromRole="trainer" ToRole="customer" />
+  </EntityType>
+  <EntityType Name="Getaccount">
+    <Key>
+      <PropertyRef Name="account_id" />
+      <PropertyRef Name="fee_paid" />
+      <PropertyRef Name="plan_id" />
+      <PropertyRef Name="plan_name" />
+      <PropertyRef Name="customer_id" />
+      <PropertyRef Name="customer_fullname" />
+      <PropertyRef Name="fee_due" />
+      <PropertyRef Name="total_fee" />
+    </Key>
+    <Property Name="account_id" Type="String" MaxLength="3" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="fee_paid" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="plan_id" Type="String" MaxLength="3" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="plan_name" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="customer_id" Type="String" MaxLength="3" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="customer_fullname" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="fee_due" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="total_fee" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Getcustomer">
+    <Key>
+      <PropertyRef Name="customer_id" />
+      <PropertyRef Name="customer_fullname" />
+      <PropertyRef Name="plan_id" />
+      <PropertyRef Name="plan_name" />
+      <PropertyRef Name="trainer_id" />
+      <PropertyRef Name="trainer_name" />
+      <PropertyRef Name="customer_address" />
+      <PropertyRef Name="customer_phone" />
+      <PropertyRef Name="customer_photo" />
+      <PropertyRef Name="customer_gender" />
+      <PropertyRef Name="customer_joindate" />
+    </Key>
+    <Property Name="customer_id" Type="String" MaxLength="3" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="customer_fullname" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="plan_id" Type="String" MaxLength="3" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="plan_name" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="trainer_id" Type="String" MaxLength="3" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="trainer_name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="customer_address" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="customer_phone" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="customer_photo" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="customer_gender" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="customer_joindate" Type="DateTime" Nullable="false" Precision="0" />
+  </EntityType>
+  <Association Name="FK_account_customer">
+    <End Role="customer" Type="Self.customer" Multiplicity="1" />
+    <End Role="account" Type="Self.account" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="customer">
+        <PropertyRef Name="customer_id" />
+      </Principal>
+      <Dependent Role="account">
+        <PropertyRef Name="customer_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_account_plans">
+    <End Role="plans" Type="Self.plan" Multiplicity="1" />
+    <End Role="account" Type="Self.account" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="plans">
+        <PropertyRef Name="plan_id" />
+      </Principal>
+      <Dependent Role="account">
+        <PropertyRef Name="plan_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_customer_plans">
+    <End Role="plans" Type="Self.plan" Multiplicity="1" />
+    <End Role="customer" Type="Self.customer" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="plans">
+        <PropertyRef Name="plan_id" />
+      </Principal>
+      <Dependent Role="customer">
+        <PropertyRef Name="plan_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_customer_trainer">
+    <End Role="trainer" Type="Self.trainer" Multiplicity="1" />
+    <End Role="customer" Type="Self.customer" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="trainer">
+        <PropertyRef Name="trainer_id" />
+      </Principal>
+      <Dependent Role="customer">
+        <PropertyRef Name="trainer_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="fitnessEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="accounts" EntityType="Self.account" />
+    <EntitySet Name="admins" EntityType="Self.admin" />
+    <EntitySet Name="customers" EntityType="Self.customer" />
+    <EntitySet Name="equipments" EntityType="Self.equipment" />
+    <EntitySet Name="plans" EntityType="Self.plan" />
+    <EntitySet Name="trainers" EntityType="Self.trainer" />
+    <EntitySet Name="Getaccounts" EntityType="Self.Getaccount" />
+    <EntitySet Name="Getcustomers" EntityType="Self.Getcustomer" />
+    <AssociationSet Name="FK_account_customer" Association="Self.FK_account_customer">
+      <End Role="customer" EntitySet="customers" />
+      <End Role="account" EntitySet="accounts" />
+    </AssociationSet>
+    <AssociationSet Name="FK_account_plans" Association="Self.FK_account_plans">
+      <End Role="plans" EntitySet="plans" />
+      <End Role="account" EntitySet="accounts" />
+    </AssociationSet>
+    <AssociationSet Name="FK_customer_plans" Association="Self.FK_customer_plans">
+      <End Role="plans" EntitySet="plans" />
+      <End Role="customer" EntitySet="customers" />
+    </AssociationSet>
+    <AssociationSet Name="FK_customer_trainer" Association="Self.FK_customer_trainer">
+      <End Role="trainer" EntitySet="trainers" />
+      <End Role="customer" EntitySet="customers" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

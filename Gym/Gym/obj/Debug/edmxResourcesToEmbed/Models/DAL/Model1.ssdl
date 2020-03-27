@@ -1,0 +1,217 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="fitnessModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="account">
+    <Key>
+      <PropertyRef Name="account_id" />
+    </Key>
+    <Property Name="customer_id" Type="varchar" MaxLength="3" Nullable="false" />
+    <Property Name="fee_paid" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="fee_due" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="total_fee" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="plan_id" Type="varchar" MaxLength="3" Nullable="false" />
+    <Property Name="account_id" Type="varchar" MaxLength="3" Nullable="false" />
+  </EntityType>
+  <EntityType Name="admin">
+    <Key>
+      <PropertyRef Name="admin_id" />
+    </Key>
+    <Property Name="admin_id" Type="varchar" MaxLength="3" Nullable="false" />
+    <Property Name="admin_username" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="admin_fullname" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="admin_password" Type="varchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <EntityType Name="customer">
+    <Key>
+      <PropertyRef Name="customer_id" />
+    </Key>
+    <Property Name="customer_id" Type="varchar" MaxLength="3" Nullable="false" />
+    <Property Name="customer_fullname" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="customer_address" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="customer_phone" Type="varchar" MaxLength="10" Nullable="false" />
+    <Property Name="customer_photo" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="customer_gender" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="customer_joindate" Type="date" Nullable="false" />
+    <Property Name="trainer_id" Type="varchar" MaxLength="3" Nullable="false" />
+    <Property Name="plan_id" Type="varchar" MaxLength="3" Nullable="false" />
+    <Property Name="customer_username" Type="varchar" MaxLength="50" />
+    <Property Name="customer_password" Type="varchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="equipment">
+    <Key>
+      <PropertyRef Name="equipment_id" />
+    </Key>
+    <Property Name="equipment_id" Type="varchar" MaxLength="3" Nullable="false" />
+    <Property Name="equipment_name" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="equipment_quantity" Type="varchar" MaxLength="2" Nullable="false" />
+    <Property Name="equipment_cost" Type="int" Nullable="false" />
+    <Property Name="equipment_photo" Type="varchar" MaxLength="1000" Nullable="false" />
+  </EntityType>
+  <EntityType Name="plans">
+    <Key>
+      <PropertyRef Name="plan_id" />
+    </Key>
+    <Property Name="plan_id" Type="varchar" MaxLength="3" Nullable="false" />
+    <Property Name="plan_name" Type="varchar" MaxLength="100" Nullable="false" />
+    <Property Name="plan_cost" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="plan_period" Type="varchar" MaxLength="100" />
+  </EntityType>
+  <EntityType Name="trainer">
+    <Key>
+      <PropertyRef Name="trainer_id" />
+    </Key>
+    <Property Name="trainer_id" Type="varchar" MaxLength="3" Nullable="false" />
+    <Property Name="trainer_name" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="trainer_contact" Type="varchar" MaxLength="10" Nullable="false" />
+    <Property Name="trainer_address" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="trainer_photo" Type="varchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'fitness.dbo.Getaccounts' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="Getaccounts">
+    <Key>
+      <PropertyRef Name="account_id" />
+      <PropertyRef Name="fee_paid" />
+      <PropertyRef Name="plan_id" />
+      <PropertyRef Name="plan_name" />
+      <PropertyRef Name="customer_id" />
+      <PropertyRef Name="customer_fullname" />
+      <PropertyRef Name="fee_due" />
+      <PropertyRef Name="total_fee" />
+    </Key>
+    <Property Name="account_id" Type="varchar" MaxLength="3" Nullable="false" />
+    <Property Name="fee_paid" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="plan_id" Type="varchar" MaxLength="3" Nullable="false" />
+    <Property Name="plan_name" Type="varchar" MaxLength="100" Nullable="false" />
+    <Property Name="customer_id" Type="varchar" MaxLength="3" Nullable="false" />
+    <Property Name="customer_fullname" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="fee_due" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="total_fee" Type="varchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'fitness.dbo.Getcustomers' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="Getcustomers">
+    <Key>
+      <PropertyRef Name="customer_id" />
+      <PropertyRef Name="customer_fullname" />
+      <PropertyRef Name="plan_id" />
+      <PropertyRef Name="plan_name" />
+      <PropertyRef Name="trainer_id" />
+      <PropertyRef Name="trainer_name" />
+      <PropertyRef Name="customer_address" />
+      <PropertyRef Name="customer_phone" />
+      <PropertyRef Name="customer_photo" />
+      <PropertyRef Name="customer_gender" />
+      <PropertyRef Name="customer_joindate" />
+    </Key>
+    <Property Name="customer_id" Type="varchar" MaxLength="3" Nullable="false" />
+    <Property Name="customer_fullname" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="plan_id" Type="varchar" MaxLength="3" Nullable="false" />
+    <Property Name="plan_name" Type="varchar" MaxLength="100" Nullable="false" />
+    <Property Name="trainer_id" Type="varchar" MaxLength="3" Nullable="false" />
+    <Property Name="trainer_name" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="customer_address" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="customer_phone" Type="varchar" MaxLength="10" Nullable="false" />
+    <Property Name="customer_photo" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="customer_gender" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="customer_joindate" Type="date" Nullable="false" />
+  </EntityType>
+  <Association Name="FK_account_customer">
+    <End Role="customer" Type="Self.customer" Multiplicity="1" />
+    <End Role="account" Type="Self.account" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="customer">
+        <PropertyRef Name="customer_id" />
+      </Principal>
+      <Dependent Role="account">
+        <PropertyRef Name="customer_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_account_plans">
+    <End Role="plans" Type="Self.plans" Multiplicity="1" />
+    <End Role="account" Type="Self.account" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="plans">
+        <PropertyRef Name="plan_id" />
+      </Principal>
+      <Dependent Role="account">
+        <PropertyRef Name="plan_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_customer_plans">
+    <End Role="plans" Type="Self.plans" Multiplicity="1" />
+    <End Role="customer" Type="Self.customer" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="plans">
+        <PropertyRef Name="plan_id" />
+      </Principal>
+      <Dependent Role="customer">
+        <PropertyRef Name="plan_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_customer_trainer">
+    <End Role="trainer" Type="Self.trainer" Multiplicity="1" />
+    <End Role="customer" Type="Self.customer" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="trainer">
+        <PropertyRef Name="trainer_id" />
+      </Principal>
+      <Dependent Role="customer">
+        <PropertyRef Name="trainer_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="fitnessModelStoreContainer">
+    <EntitySet Name="account" EntityType="Self.account" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="admin" EntityType="Self.admin" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="customer" EntityType="Self.customer" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="equipment" EntityType="Self.equipment" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="plans" EntityType="Self.plans" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="trainer" EntityType="Self.trainer" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Getaccounts" EntityType="Self.Getaccounts" store:Type="Views" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [Getaccounts].[account_id] AS [account_id], 
+    [Getaccounts].[fee_paid] AS [fee_paid], 
+    [Getaccounts].[plan_id] AS [plan_id], 
+    [Getaccounts].[plan_name] AS [plan_name], 
+    [Getaccounts].[customer_id] AS [customer_id], 
+    [Getaccounts].[customer_fullname] AS [customer_fullname], 
+    [Getaccounts].[fee_due] AS [fee_due], 
+    [Getaccounts].[total_fee] AS [total_fee]
+    FROM [dbo].[Getaccounts] AS [Getaccounts]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="Getcustomers" EntityType="Self.Getcustomers" store:Type="Views" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [Getcustomers].[customer_id] AS [customer_id], 
+    [Getcustomers].[customer_fullname] AS [customer_fullname], 
+    [Getcustomers].[plan_id] AS [plan_id], 
+    [Getcustomers].[plan_name] AS [plan_name], 
+    [Getcustomers].[trainer_id] AS [trainer_id], 
+    [Getcustomers].[trainer_name] AS [trainer_name], 
+    [Getcustomers].[customer_address] AS [customer_address], 
+    [Getcustomers].[customer_phone] AS [customer_phone], 
+    [Getcustomers].[customer_photo] AS [customer_photo], 
+    [Getcustomers].[customer_gender] AS [customer_gender], 
+    [Getcustomers].[customer_joindate] AS [customer_joindate]
+    FROM [dbo].[Getcustomers] AS [Getcustomers]</DefiningQuery>
+    </EntitySet>
+    <AssociationSet Name="FK_account_customer" Association="Self.FK_account_customer">
+      <End Role="customer" EntitySet="customer" />
+      <End Role="account" EntitySet="account" />
+    </AssociationSet>
+    <AssociationSet Name="FK_account_plans" Association="Self.FK_account_plans">
+      <End Role="plans" EntitySet="plans" />
+      <End Role="account" EntitySet="account" />
+    </AssociationSet>
+    <AssociationSet Name="FK_customer_plans" Association="Self.FK_customer_plans">
+      <End Role="plans" EntitySet="plans" />
+      <End Role="customer" EntitySet="customer" />
+    </AssociationSet>
+    <AssociationSet Name="FK_customer_trainer" Association="Self.FK_customer_trainer">
+      <End Role="trainer" EntitySet="trainer" />
+      <End Role="customer" EntitySet="customer" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>
